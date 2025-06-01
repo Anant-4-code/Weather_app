@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   base: '/Weather-app/',
   plugins: [react()],
@@ -13,14 +13,16 @@ export default defineConfig({
         changeOrigin: true,
       }
     },
-    open: '/Weather-app/',
+    open: true,
   },
   build: {
     outDir: 'dist',
     emptyOutDir: true,
     sourcemap: true,
     rollupOptions: {
-      input: 'index.html',
+      input: {
+        main: resolve(__dirname, 'index.html')
+      },
       output: {
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
@@ -30,6 +32,6 @@ export default defineConfig({
   },
   preview: {
     port: 4173,
-    open: '/Weather-app/',
+    open: true,
   },
 });
