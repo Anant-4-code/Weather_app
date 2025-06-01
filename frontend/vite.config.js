@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 
 export default defineConfig({
-  base: '/Weather-app/',
+  base: '/Weather_app/',
   plugins: [react()],
   server: {
     port: 3000,
