@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+      // Get the current path and redirect to the app with the path as a hash
+      const path = window.location.pathname;
+      const search = window.location.search;
+      const hash = window.location.hash;
+      const newPath = path.replace(/^\/Weather-app\//, '/');
+      window.location.href = `/Weather-app/#${newPath}${search}${hash}`;
+    </script>
+    <meta http-equiv="refresh" content="0;URL='/Weather-app/'">
+  </head>
+  <body>
+    <p>Redirecting to the app...</p>
+  </body>
+</html>
