@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Weather_app/',
+  base: './',  // Use relative paths for HashRouter
   server: {
     port: 3000,
     proxy: {
