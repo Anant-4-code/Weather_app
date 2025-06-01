@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
-// Using HashRouter, so no need for BASE_NAME
+// Base URL for GitHub Pages
+const BASE_NAME = '/Weather_app';
 import { fetchWeatherByCity, fetchWeatherByCoordinates, fetchForecastByCity } from './services/weatherService';
 import Navbar from './components/Navbar';
 import ForecastPage from './pages/Forecast';
@@ -229,7 +230,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router basename={BASE_NAME}>
       <AppContent
         weatherData={weatherData}
         forecastData={forecastData}
