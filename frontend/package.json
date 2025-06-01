@@ -2,7 +2,7 @@
   "name": "weather-app-frontend",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://Anant-4-code.github.io/weathe-aap",
+  "homepage": "https://anant-4-code.github.io/Weather_app",
   "type": "module",
   "scripts": {
     "dev": "vite",
