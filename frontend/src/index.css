@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+
+  color-scheme: light dark;
+  color: #1e293b;
+  background-color: #f8fafc;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold leading-tight tracking-tight;
+  color: #0f172a;
+}
+
+h1 { @apply text-4xl md:text-5xl; }
+h2 { @apply text-3xl md:text-4xl; }
+h3 { @apply text-2xl md:text-3xl; }
+h4 { @apply text-xl md:text-2xl; }
+h5 { @apply text-lg md:text-xl; }
+
+p, span, div {
+  @apply text-base leading-relaxed tracking-normal;
+  color: #334155;
+}
+
+/* Dark mode text colors */
+.dark h1, 
+.dark h2, 
+.dark h3, 
+.dark h4, 
+.dark h5, 
+.dark h6 {
+  color: #f8fafc;
+}
+
+.dark p, 
+.dark span, 
+.dark div,
+.dark {
+  color: #e2e8f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Text selection styling */
+::selection {
+  background-color: #1e40af; /* Dark blue */
+  color: #fef08a; /* Light yellow text */
+  text-shadow: none;
+}
+
+/* For Firefox */
+::-moz-selection {
+  background-color: #1e40af; /* Dark blue */
+  color: #fef08a; /* Light yellow text */
+  text-shadow: none;
+}
+
+/* For WebKit/Blink browsers */
+::-webkit-selection {
+  background-color: #1e40af; /* Dark blue */
+  color: #fef08a; /* Light yellow text */
+  text-shadow: none;
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f6c453; /* Default Golden Peach accent color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #faae2b; /* Default Golden Peach highlight color */
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f6c453 rgba(255, 255, 255, 0.1);
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-white/30 backdrop-blur-glass shadow-glass border border-white/20 rounded-xl;
+  }
+  
+  /* Sidebar styles (kept for reference) */
+  .sidebar-icon {
+    @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto
+      bg-secondary-100 hover:bg-secondary-200 dark:bg-secondary-900 dark:hover:bg-secondary-800
+      text-primary-600 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200
+      rounded-xl hover:rounded-2xl transition-all duration-300 ease-linear cursor-pointer;
+  }
+
+  .sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-14
+      rounded-md shadow-md text-white bg-secondary-900
+      text-xs font-bold transition-all duration-100 scale-0 origin-left;
+  }
+  
+  /* Navbar styles */
+  .navbar-item {
+    @apply flex items-center justify-center px-3 py-2 rounded-md
+      text-white hover:text-primary-300 transition-all duration-200
+      relative cursor-pointer;
+  }
+  
+  .navbar-tooltip {
+    @apply absolute w-auto p-2 min-w-max top-full mt-1
+      rounded-md shadow-md text-white bg-secondary-900
+      text-xs font-bold transition-all duration-100 scale-0 origin-top z-50;
+  }
+
+  /* Hide scrollbar class for specific elements */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

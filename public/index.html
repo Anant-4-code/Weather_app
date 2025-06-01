@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWise - Your Personal Weather Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --nav-bg: #1565c0;
+            --primary: #0d1b2a;
+            --secondary: #4a5568;
+            --accent: #42a5f5;
+            --accent-hover: #2196f3;
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #d8f1ff, #b3e5fc);
+            min-height: 100vh;
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--nav-bg);
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: #ffeb3b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #bbdefb;
+        }
+
+        .cta-button {
+            background-color: #42a5f5;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #2196f3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--secondary);
+            font-size: 1rem;
+        }
+
+        /* Weather Display Card */
+        .weather-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            margin: 3rem auto;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .weather-icon {
+            font-size: 4rem;
+            margin: 1rem 0;
+            color: #ffc107;
+        }
+
+        .temp {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            color: var(--primary);
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--nav-bg);
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                margin: 1rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                WeatherWise
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Weather forecasts, now at your fingertips</h1>
+        <p>Get accurate, real-time weather updates and forecasts for any location. Plan your day with confidence.</p>
+        <button class="cta-button" style="font-size: 1.1rem; padding: 0.8rem 2rem;">
+            <i class="fas fa-cloud-sun" style="margin-right: 8px;"></i>
+            Check the Weather Now
+        </button>
+
+        <!-- Weather Display Card -->
+        <div class="weather-card">
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <h2>New York, NY</h2>
+            </div>
+            <div class="weather-icon">
+                <i class="fas fa-sun"></i>
+            </div>
+            <div class="temp">24°C</div>
+            <div class="description">Sunny</div>
+            <div class="details" style="display: flex; justify-content: space-around; margin-top: 1.5rem; color: var(--secondary);">
+                <div><i class="fas fa-wind" style="color: #64b5f6; margin-right: 5px;"></i> 12 km/h</div>
+                <div><i class="fas fa-tint" style="color: #42a5f5; margin-right: 5px;"></i> 45%</div>
+                <div><i class="fas fa-arrow-up" style="color: #ef5350; margin-right: 5px;"></i> 28°</div>
+                <div><i class="fas fa-arrow-down" style="color: #42a5f5; margin-right: 5px;"></i> 18°</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <h2 class="section-title">Why Choose WeatherWise?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #ff9800;">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Real-time Updates</h3>
+                <p>Get instant weather updates with our lightning-fast service. Never be caught off-guard by sudden weather changes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #2196f3;">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Responsive Design</h3>
+                <p>Beautifully designed interface that works perfectly on any device, from smartphones to desktops.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="color: #4caf50;">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI-Powered</h3>
+                <p>Smart weather predictions and insights powered by advanced AI technology for more accurate forecasts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 WeatherWise. All rights reserved.</p>
+        <div style="margin-top: 1rem;">
+            <a href="#" style="color: white; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: white; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color: white; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: white; margin: 0 10px; font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for weather icon
+        document.addEventListener('DOMContentLoaded', () => {
+            const weatherIcon = document.querySelector('.weather-icon i');
+            
+            // Add animation class
+            setTimeout(() => {
+                weatherIcon.style.transition = 'transform 0.5s ease';
+                weatherIcon.style.transform = 'scale(1.1)';
+                
+                setTimeout(() => {
+                    weatherIcon.style.transform = 'scale(1)';
+                }, 500);
+            }, 1000);
+            
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
