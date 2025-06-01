@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig(({ command }) => {
   const isProduction = command === 'build';
@@ -23,10 +24,20 @@ export default defineConfig(({ command }) => {
       emptyOutDir: true,
       rollupOptions: {
         input: {
-          main: './index.html'
+          main: resolve(__dirname, 'index.html')
+        },
+        output: {
+          entryFileNames: 'assets/[name]-[hash].js',
+          chunkFileNames: 'assets/[name]-[hash].js',
+          assetFileNames: 'assets/[name]-[hash][extname]'
         }
       }
     },
-    publicDir: 'public'
+    publicDir: 'public',
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, './src')
+      }
+    }
   };
 });
