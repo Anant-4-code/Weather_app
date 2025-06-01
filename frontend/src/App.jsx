@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 // Base URL for GitHub Pages
-const BASE_NAME = '/Weather_app';
+const BASE_NAME = '/Weather-app';  // Note the hyphen instead of underscore
 import { fetchWeatherByCity, fetchWeatherByCoordinates, fetchForecastByCity } from './services/weatherService';
 import Navbar from './components/Navbar';
 import ForecastPage from './pages/Forecast';
